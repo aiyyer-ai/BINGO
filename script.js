@@ -36,14 +36,22 @@ let possibleSquares = [
 	`dies to non-boss`,
 	`randomly sings for no reason`,
 	`asks game question she does NOT want answered`,
-	`asks game question she WANTS answered`
+	`asks game question she WANTS answered`,
+	`overgrips controller / panic crouch`,
+	`clears throat mm-Hmm`
 ];
 
 function generateBoard(button) {
 	const inputBar = document.getElementById("seedInput");
+	const shaneGif = document.getElementById("gif");
+	const gabPeek = document.getElementById("gabpeek");
+	const bellsPeek = document.getElementById("bellspeek");
 	let randomSeed = inputBar.value;
 	inputBar.style.display = `none`;
 	button.style.display = `none`;
+	shaneGif.style.display = `none`;
+	gabPeek.style.display = `none`;
+	bellsPeek.style.display = `none`;
 	setSeed(randomSeed);
 	let seedDiv = document.getElementById(`seed`);
 	seedDiv.innerHTML = `SEED: ${randomSeed}`;
