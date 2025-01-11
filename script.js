@@ -61,6 +61,7 @@ function generateBoard(button) {
 		  newDiv.classList.add(`cell`);
 		  newDiv.id = `${row},${column}`;
 		  let newH1 = document.createElement(`H1`);
+		  newH1.classList.add(`bingoText`);
 		  newH1.setAttribute(`data-dynamic-font-size`, "");
 		  if(newDiv.id == `2,2`) {
 			  let newText = document.createTextNode(`LATE (FREE SPACE)`);
@@ -72,6 +73,10 @@ function generateBoard(button) {
 			  }
 		  }
 		  newDiv.appendChild(newH1);
+		  let bellaX = document.createElement(`div`);
+		  bellaX.classList.add(`bellaX`);	
+		  newDiv.appendChild(bellaX);
+		  newDiv.bellaX = bellaX;
 		  bingoCard.appendChild(newDiv);
 		  newDiv.onclick = toggleRed;
 	  }
@@ -162,10 +167,10 @@ function shuffle(array) {
 }
 
 function toggleRed() {
-	if(this.style.backgroundColor != `red`) {
-		this.style.backgroundColor = `red`;
+	if(this.bellaX.style.backgroundColor != `deeppink`) {
+		this.bellaX.style.backgroundColor = `deeppink`;
 	} else {
-		this.style.backgroundColor = ``;
+		this.bellaX.style.backgroundColor = ``;
 	}
 	
 }
