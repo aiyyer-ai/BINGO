@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>BINGO</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="icon" href="./favicon.ico" type="image/x-icon">
+  </head>
+  <body>
+    <main>
+      <div class="center" id="center">
+        <div class="title" id="title">
+          SHANE BINGO
+        </div>
+        <input class="input" type="text" id="seedInput" maxlength="6" placeholder="Card Seed">
+        <button class="button" onclick="generateBoard(this)">Go!</button>
+        <div class="bingoCard" id="bingoCard"></div>
+      </div>
+      <div class="seed" id="seed"></div>
+    </main>
+	<script src="script.js"></script>
+  </body>
+</html>
