@@ -30,6 +30,7 @@ html {
 .peekEmote {
   position: absolute;
   top: 13%;
+  z-index: -1;
 }
 
 #gabpeek {
