@@ -195,6 +195,10 @@ function generateBoard(button) {
 	seedDiv.innerHTML = `SEED: ${randomSeed}`;
 	shuffle(possibleSquares);
 	let bingoCard = document.getElementById(`bingoCard`);
+	if(bingoCard.clientWidth > window.innerWidth) {
+		bingoCard.style.width = `100vw`;
+		bingoCard.style.height = `100vw`;
+	}
 	bingoCard.style.visibility = `visible`;
 	bingoCard.style.gap = gridSize.gap + "px";
 	let xSize = `calc(${100/gridSize.x}% - ${gridSize.gap - 1}px) `;
