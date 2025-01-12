@@ -40,8 +40,10 @@ let possibleSquares = [
 	`overgrips controller / panic crouch`,
 	`clears throat mm-Hmm`,
 	`talks about philly`,
-	`"dragon deez nuts"`,
-	`whispers to self`
+	`"deez nuts"`,
+	`whispers to self`,
+	`i hate it here`,
+	
 ];
 
 function generateBoard(button) {
