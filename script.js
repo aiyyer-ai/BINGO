@@ -83,8 +83,8 @@ window.onload = (event) => {
 			newDiv.classList.add(`cell`);
 			newDiv.id = text;
 			let newH1 = document.createElement(`H1`);
-			newH1.classList.add(`bingoText`);
-			newH1.setAttribute(`data-dynamic-font-size`, "");
+			newH1.classList.add(`bingoText`, `needsResizing`);
+			//newH1.setAttribute(`data-dynamic-font-size`, "");
 			let newText = document.createTextNode(text.toUpperCase());
 			newH1.appendChild(newText);
 			newDiv.appendChild(newH1);
@@ -132,8 +132,9 @@ window.onload = (event) => {
 				newDiv.id = `${row},${column}`;
 				let newH1 = document.createElement(`H1`);
 				newH1.classList.add(`bingoText`);
-				newH1.setAttribute(`data-dynamic-font-size-smaller`, "");
+				//newH1.setAttribute(`data-dynamic-font-size`, "");
 				if(newDiv.id == `2,2`) {
+					newH1.classList.add(`needsResizing`);
 					let newText = document.createTextNode(`LATE (FREE SPACE)`);
 					newH1.appendChild(newText);
 				} else {
@@ -164,6 +165,7 @@ function checkBoardSeed() {
 			let checkSquare = document.getElementById(`${row},${column}`);
 			if(checkSquare.id != `2,2`) {
 				checkSquare.textNode.childNodes[0].nodeValue = squaresCopy[(row * gridSize.x) + column].toUpperCase();
+				checkSquare.textNode.classList.add(`needsResizing`);
 				if(masterSquares[squaresCopy[(row * gridSize.x) + column]]) {
 					checkSquare.bellaX.style.backgroundColor = `deeppink`;
 				} else {
@@ -174,6 +176,7 @@ function checkBoardSeed() {
 			}
 		}
 	}
+	adjustTextSize();
 }
 
 function generateBoard(button) {
@@ -204,8 +207,8 @@ function generateBoard(button) {
 		  newDiv.classList.add(`cell`);
 		  newDiv.id = `${row},${column}`;
 		  let newH1 = document.createElement(`H1`);
-		  newH1.classList.add(`bingoText`);
-		  newH1.setAttribute(`data-dynamic-font-size`, "");
+		  newH1.classList.add(`bingoText`, `needsResizing`);
+		  //newH1.setAttribute(`data-dynamic-font-size`, "");
 		  if(newDiv.id == `2,2`) {
 			  let newText = document.createTextNode(`LATE (FREE SPACE)`);
 			  newH1.appendChild(newText);
@@ -312,82 +315,113 @@ function getPairedFactors(num) {
 	return factors;
 }
 
+// function adjustTextSize() {
+// 	const dynamicFontSize = (textLength, halfTextSize = false) => {
+// 		/**
+// 		 * Edit these values to suit your needs
+// 		 */
+// 		// Them minimum and maximum font sizes in pixels
+// 		const minFontSize = 14;
+// 		const maxFontSize = 35;
+
+// 		// The minimum and maximum line lengths in characters that should affect size
+// 		const minLineLength = 12;
+// 		const maxLineLength = 50;
+
+// 		// The minimum and maximum viewport widths in pixels where resizing should occur
+// 		const minViewportWidth = 1;
+// 		const maxViewportWidth = 4000;
+
+// 		/**
+// 		 * Danger, calculations below, tread carefully
+// 		 */
+// 		// Relative max font size, gets bigger the fewer characters there are, down to minLineLength
+// 		const relativeMaxFontSize =
+// 			textLength < minLineLength
+// 			? maxFontSize
+// 			: textLength > maxLineLength
+// 			? minFontSize
+// 			: maxFontSize -
+// 				((maxFontSize - minFontSize) * (textLength - minLineLength)) /
+// 				(maxLineLength - minLineLength);
+
+// 		// Relative max viewport width, gets smaller the bigger the font size so it doesn't resize too soon
+// 		const relativeMaxViewportWidth =
+// 			maxViewportWidth * (minFontSize / relativeMaxFontSize);
+
+// 		// Relative min viewport width, gets bigger the smaller the font size so it doesn't resize too late
+// 		const relativeMinViewportWidth =
+// 			minViewportWidth * (maxFontSize / relativeMaxFontSize);
+
+// 		// Viewport width calculations
+// 		const viewportWidth =
+// 			(100 * (maxFontSize - minFontSize)) /
+// 			(relativeMaxViewportWidth - relativeMinViewportWidth);
+
+// 		// Relative font size calculation
+// 		const relativeFontSize =
+// 			(relativeMinViewportWidth * maxFontSize -
+// 			relativeMaxViewportWidth * minFontSize) /
+// 			(relativeMinViewportWidth - relativeMaxViewportWidth);
+
+// 		// The magic clamp
+// 		if(halfTextSize) {
+// 			return `clamp(${minFontSize / 32}rem, ${viewportWidth}vw + ${
+// 				relativeFontSize / 32
+// 			}rem, ${relativeMaxFontSize / 32}rem)`;
+// 		} else {
+// 			return `clamp(${minFontSize / 16}rem, ${viewportWidth}vw + ${
+// 				relativeFontSize / 16
+// 			}rem, ${relativeMaxFontSize / 16}rem)`;
+// 		}
+
+// 	};
+
+// 		const dynamicFontEls = document.querySelectorAll("[data-dynamic-font-size]");
+
+// 		dynamicFontEls.forEach((dynamicFontEl) => {
+// 			dynamicFontEl.style.fontSize = dynamicFontSize(
+// 				dynamicFontEl.textContent.replace(/(<([^>]+)>)/gi, "").trim().length
+// 			);
+// 		});
+
+// 		const dynamicSmaller = document.querySelectorAll("[data-dynamic-font-size-smaller]");
+
+// 		dynamicSmaller.forEach((dynamicFontSmall) => {
+// 			dynamicFontSmall.style.fontSize = dynamicFontSize(
+// 				dynamicFontSmall.textContent.replace(/(<([^>]+)>)/gi, "").trim().length,
+// 				true
+// 			);
+// 		});
+// }
+
 function adjustTextSize() {
-	const dynamicFontSize = (textLength, halfTextSize = false) => {
-		/**
-		 * Edit these values to suit your needs
-		 */
-		// Them minimum and maximum font sizes in pixels
-		const minFontSize = 14;
-		const maxFontSize = 35;
 
-		// The minimum and maximum line lengths in characters that should affect size
-		const minLineLength = 12;
-		const maxLineLength = 50;
+	const isOverflown = ({ clientWidth, clientHeight, scrollWidth, scrollHeight }) => (scrollWidth > clientWidth) || (scrollHeight > clientHeight);
 
-		// The minimum and maximum viewport widths in pixels where resizing should occur
-		const minViewportWidth = 1;
-		const maxViewportWidth = 4000;
+	const resizeText = ({ element, elements, minSize = 1, maxSize = 20, step = 1, unit = 'vh' }) => {
+	(elements || [element]).forEach(el => {
+		let i = minSize
+		let overflow = false
 
-		/**
-		 * Danger, calculations below, tread carefully
-		 */
-		// Relative max font size, gets bigger the fewer characters there are, down to minLineLength
-		const relativeMaxFontSize =
-			textLength < minLineLength
-			? maxFontSize
-			: textLength > maxLineLength
-			? minFontSize
-			: maxFontSize -
-				((maxFontSize - minFontSize) * (textLength - minLineLength)) /
-				(maxLineLength - minLineLength);
+			const parent = el.parentNode
 
-		// Relative max viewport width, gets smaller the bigger the font size so it doesn't resize too soon
-		const relativeMaxViewportWidth =
-			maxViewportWidth * (minFontSize / relativeMaxFontSize);
+		while (!overflow && i < maxSize) {
+			el.style.fontSize = `${i}${unit}`
+			overflow = isOverflown(parent)
 
-		// Relative min viewport width, gets bigger the smaller the font size so it doesn't resize too late
-		const relativeMinViewportWidth =
-			minViewportWidth * (maxFontSize / relativeMaxFontSize);
-
-		// Viewport width calculations
-		const viewportWidth =
-			(100 * (maxFontSize - minFontSize)) /
-			(relativeMaxViewportWidth - relativeMinViewportWidth);
-
-		// Relative font size calculation
-		const relativeFontSize =
-			(relativeMinViewportWidth * maxFontSize -
-			relativeMaxViewportWidth * minFontSize) /
-			(relativeMinViewportWidth - relativeMaxViewportWidth);
-
-		// The magic clamp
-		if(halfTextSize) {
-			return `clamp(${minFontSize / 32}rem, ${viewportWidth}vw + ${
-				relativeFontSize / 32
-			}rem, ${relativeMaxFontSize / 32}rem)`;
-		} else {
-			return `clamp(${minFontSize / 16}rem, ${viewportWidth}vw + ${
-				relativeFontSize / 16
-			}rem, ${relativeMaxFontSize / 16}rem)`;
+		if (!overflow) i += step
 		}
 
-	};
+		// revert to last state where no overflow happened
+		el.style.fontSize = `${i - step}${unit}`
+		el.classList.remove(`needsResizing`);
+	})
+	}
 
-		const dynamicFontEls = document.querySelectorAll("[data-dynamic-font-size]");
+	resizeText({
+		elements: document.querySelectorAll('.needsResizing'),
+		step: 0.25
+	  })
 
-		dynamicFontEls.forEach((dynamicFontEl) => {
-			dynamicFontEl.style.fontSize = dynamicFontSize(
-				dynamicFontEl.textContent.replace(/(<([^>]+)>)/gi, "").trim().length
-			);
-		});
-
-		const dynamicSmaller = document.querySelectorAll("[data-dynamic-font-size-smaller]");
-
-		dynamicSmaller.forEach((dynamicFontSmall) => {
-			dynamicFontSmall.style.fontSize = dynamicFontSize(
-				dynamicFontSmall.textContent.replace(/(<([^>]+)>)/gi, "").trim().length,
-				true
-			);
-		});
 }

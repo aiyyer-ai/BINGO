@@ -11,7 +11,7 @@ html {
 .title {
   font-family: 'Luckiest Guy';
 	color: black;
-  font-size: 50px;
+  font-size: 5.5vh;
 }
 
 .center {
@@ -105,7 +105,7 @@ h1 {
   right: 50%;
   transform: translateX(50%);
   font-family: 'Luckiest Guy';
-  font-size: 35px;
+  font-size: 3.5vh;
 }
 
 .button {
@@ -116,7 +116,7 @@ h1 {
   font-weight: bold;
   padding: 4px 8px;
   text-align: center;
-  font-size: 40px;
+  font-size: 4.5vh;
   font-family: 'Luckiest Guy';
   margin: 5px 0px;
   opacity: 0.9;
@@ -138,11 +138,11 @@ h1 {
   text-align: center;
   font-family: 'Oswald';
   background-color: transparent;
-  font-size: 40px;
+  font-size: 4.5vh;
   border: none;
   box-shadow: none;
   border-bottom: 5px solid black;
-  width: 10vw;
+  width: 20vh;
 }
 
 .input:focus {
