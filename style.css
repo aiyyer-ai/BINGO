@@ -74,7 +74,7 @@ h1 {
 
 .seed {
   position: absolute;
-  bottom: 50px;
+  bottom: 2vh;
   right: 50%;
   transform: translateX(50%);
   font-family: 'Luckiest Guy';

@@ -42,8 +42,8 @@ let possibleSquares = [
 	`talks about philly`,
 	`"deez nuts"`,
 	`whispers to self`,
-	`i hate it here`,
-	
+	`"i hate it here"`,
+
 ];
 
 function generateBoard(button) {
