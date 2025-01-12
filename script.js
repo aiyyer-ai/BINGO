@@ -39,7 +39,9 @@ let possibleSquares = [
 	`asks game question she WANTS answered`,
 	`overgrips controller / panic crouch`,
 	`clears throat mm-Hmm`,
-	`talks about philadelphia`
+	`talks about philly`,
+	`"dragon deez nuts"`,
+	`whispers to self`
 ];
 
 function generateBoard(button) {
