@@ -34,11 +34,11 @@ html {
 }
 
 #gabpeek {
-  left: 34%;
+  left: calc(50% - 30vh);
 }
 
 #bellspeek {
-  right: 34%;
+  right: calc(50% - 30vh);
 }
 
 .masterBoard {
