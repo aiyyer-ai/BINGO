@@ -43,7 +43,8 @@ let possibleSquares = [
 	`"deez nuts"`,
 	`whispers to self`,
 	`"i hate it here"`,
-	`leans as if it affects the game`
+	`leans as if it affects the game`,
+	`"One more try"`
 ];
 
 var masterSquares = {};
