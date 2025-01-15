@@ -33,7 +33,7 @@ let possibleSquares = [
 	`makes herself laugh`,
 	`talks about elden ring lore`,
 	`work mention`,
-	`dies to non-boss`,
+	`dies to non-boss enemy`,
 	`randomly sings for no reason`,
 	`asks game question she does NOT want answered`,
 	`asks game question she WANTS answered`,
@@ -44,7 +44,8 @@ let possibleSquares = [
 	`whispers to self`,
 	`"i hate it here"`,
 	`leans as if it affects the game`,
-	`"One more try"`
+	`"One more try"`,
+	`dies to fall damage`
 ];
 
 var masterSquares = {};
