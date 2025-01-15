@@ -23,7 +23,7 @@ let possibleSquares = [
 	`*sneezes*`,
 	`shows recent purchase`,
 	`"i'm innocent"`,
-	`talks about football`,
+	`*gasps*`,
 	`misreads a chat message`,
 	`name drops w/ username`,
 	`"love that for us"`,
@@ -45,7 +45,7 @@ let possibleSquares = [
 	`"i hate it here"`,
 	`leans as if it affects the game`,
 	`"One more try"`,
-	`dies to fall damage`
+	`dies to fall damage`,
 ];
 
 var masterSquares = {};
