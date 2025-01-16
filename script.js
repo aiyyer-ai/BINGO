@@ -49,7 +49,8 @@ let possibleSquares = [
 	`dies to fall damage`,
 	`"brother"`,
 	`checks for secret door that isn't there`,
-	`*sighs*`
+	`*sighs*`,
+	`shane uses MTG terms`
 ];
 
 var masterSquares = {};
