@@ -27,7 +27,8 @@ let possibleSquares = [
 	`misreads a chat message`,
 	`name drops w/ username`,
 	`"love that for us"`,
-	`gives no spoiler speech`,
+	// `gives no spoiler speech`,
+	`does the same runback 3 or more times`,
 	`disney mention`,
 	`cookie clicker`,
 	`makes herself laugh`,
@@ -44,7 +45,7 @@ let possibleSquares = [
 	`whispers to self`,
 	`"i hate it here"`,
 	`leans as if it affects the game`,
-	`"One more try"`,
+	`"hey besties"`,
 	`dies to fall damage`,
 ];
 
