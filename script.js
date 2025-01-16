@@ -47,6 +47,9 @@ let possibleSquares = [
 	`leans as if it affects the game`,
 	`"hey besties"`,
 	`dies to fall damage`,
+	`"brother"`,
+	`checks for secret door that isn't there`,
+	`*sighs*`
 ];
 
 var masterSquares = {};
